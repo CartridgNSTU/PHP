@@ -1,0 +1,50 @@
+<?php
+    header('Content-type: text/html; charset=utf-8');
+    $num = $_POST['x'];
+    $num2 = $_POST['y'];
+    $move = $_POST['d'];
+    if ( $move == '+') {
+        $sum = $num + $num2;
+        echo $num, "+ ", $num2, " = ", $sum;
+    }
+    else if ($move == '-') {
+        $sum = $num - $num2;
+        echo $num, "- ", $num2, " = ", $sum;
+    }
+    else if ($move == '*') {
+        $sum = $num * $num2;
+        echo $num, "* ", $num2, " = ", $sum;
+    }
+    else if ($move == '/') {
+        $sum = $num / $num2;
+        echo $num, "/ ", $num2, " = ", $sum;
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="calc.php" method="POST" >
+        <span class="text" >x: </span><input name="x" type="text"><br>
+        <span class="text" >y: </span><input name="y" type="text"><br>
+        <select name="d">
+            <option value="+"> + </option>
+            <option value="-"> - </option>
+            <option value="*"> * </option>
+            <option value="/"> / </option>
+        </select>
+        <input type="submit" value="Отправить" >
+    </form>
+    <div id="res">
+        <?php
+            if (isset($_POST['x']) && isset($_POST['y']) && isset($_POST['deist'])) {
+                echo $sum;
+            }
+        ?>
+    </div>
+</body>
+</html>
